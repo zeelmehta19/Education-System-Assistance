@@ -2,7 +2,7 @@
 
 if(!isset($_POST['submit']))
 {
-    header("location: ../menu.php");
+    header("location: ../adminhome.php");
     exit();
 }
 else
@@ -26,7 +26,7 @@ else
     if($que)
     {
 
-            header("location: ../menu.php?");
+            header("location: ../adminhome.php?");
         }
     
     else
