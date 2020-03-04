@@ -1,154 +1,83 @@
 <html>
 <head>
-<title>schedule</title>
+<title>visitor</title>
 <style>
-input{
-	width:20%;
-	height:7%;
-}
 label{
-	font-size:1.5rem;
-
+	font-size:1.2rem;
+	margin-left:5%;
+}
+.input1{
+	height:5%;
+	width:17%;
+	font-size:0.8em;
+	margin-left:1.5%;
+	margin-top:1%;
 }
 select{
 	width:20%;
-	height:7%;
+	font-size:1em;
+	margin-left:0%;
+	margin-top:1%;
 }
 </style>
 </head>
-<body style="background-color:rgb(230,230,230)">
-<?php include "menu.php"; ?>
-
+<body style="background-color:white">
+	<?php include 'menu.php'; ?>
+	<form method="post" action="./includes/enterSchedule.php">
 	<div style="background-color:white; border:1px solid black; margin-left:10%; width:80%; margin-top:5%; box-shadow:0 0 10px gray">
-		<div style="background-color:black; height:15%; color:white; margin-top:-3.5%; text-align:center; font-size:2rem; box-shadow:0px 10px 7px rgb(200,200,200)"><h3><b>Schedule details</b></h3></div>
-		<table border="1" cellspacing="0" cellpadding="6" style="margin-left:1.3%; margin-top:5%; box-shadow:0 0 5px green">
-		<tr style="text-align:center">
-		<th ></th>
-		<th colspan="3">Monday</th>
-		<th colspan="3">Tuesday</th>
-		<th colspan="3">Wednesday</th>
-		<th colspan="3">Thursday</th>
-		<th colspan="3">Friday</th>
-		<th colspan="3">Saturday</th>
-		<th colspan="3">Sunday</th>
-		</tr>
-		<tr style="text-align:center">
-		<td></td>
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
+		<div style="background-color:green; height:10%; color:white; margin-top:-3.5%; text-align:center; font-size:2rem; box-shadow:0px 10px 7px rgb(150,150,150)"><h3><b>Schedule</b></h3></div>
+		<br><br><h2><?php if($_GET['m'] == "OK") {echo "successfully added ! ";} ?></h2>
 
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
-
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
-
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
-
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
-
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
-
-		<td>Name</td>
-		<td>From</td>
-		<td>To</td>
-		</tr>
-		<tr style="text-align:center">
-		<td>Morning</td>
-		<td>RB</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td>RR</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td>PM</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td>SS</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td> - </td>
-		<td> - </td>
-		<td> - </td>
-
-		<td>ZZ</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td> - </td>
-		<td> - </td>
-		<td> - </td>
-		</tr>
-		<tr style="text-align:center">
-		<td>Evening</td>
-		<td>RB</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td>RR</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td>PM</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td>SS</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td> - </td>
-		<td> - </td>
-		<td> - </td>
-
-		<td>ZZ</td>
-		<td>12</td>
-		<td>1</td>
-
-		<td> - </td>
-		<td> - </td>
-		<td> - </td>
-		</tr>
-		</table>
-		<p style="text-align:center">------------------------------------------------------------------------------------------------------------------------------------------------</p>
-		<form method="post" action="">
-		<br><label for="teacher" style="margin-left:5%">Select teacher </label>
+		<br><br><br>
+		<label for="day">Select day :</label>
+		<select name="day" id="day">
+		<option>Monday</option>
+		<option>Tuesday</option>
+		<option>Wednesday</option>
+		<option>Thursday</option>
+		<option>Friday</option>
+		<option>Saturday</option>
+		<option>Sunday</option>
+		</select>
+		<label for="date" >Date : </label>
+		<input type="date" class="input1" name="date" id="date" >
+		<label for="teacher">Teacher :</label>
 		<select name="teacher" id="teacher">
-			<option>1</option>
-			<option>2</option>
-		</select>
+<?php
+			require './includes/connect.php'; ////////// CONNECT TO DATABSE HERE///////
+			$sql = "SELECT * FROM `teacherdetails`";
+			$stmt = mysqli_stmt_init($conn);
+			if(!mysqli_stmt_prepare($stmt,$sql))
+			{
+					echo "something went wrong";
+					exit();
+			}
+			else
+			{
+					mysqli_stmt_execute($stmt);
+					$result = mysqli_stmt_get_result($stmt);
+					while($row = mysqli_fetch_assoc($result))
+					{
+							echo '<option>'.$row['name'].'</option>';
 
-		<label for="day" style="margin-left:15%">Select day </label>
-		<select name="teacher" id="day">
-			<option>Monday</option>
-			<option>Tuesday</option>
-			<option>Wednesday</option>
-			<option>Thursday</option>
-			<option>Friday</option>
-			<option>Saturday</option>
-			<option>Sunday</option>
-		</select>
+					}
 
-		<br><br><label style="margin-left:5%">Enter : </label>
-		<label style="margin-left:5%">Start : </label><input type="time" id="starttime" name="time"/>
-		<label style="margin-left:5%">End : </label><input type="time" id="endtime" name="time"/>
+			}
 
-		<br><br><input type="button" value="Check" style="width:40%; background-color:orange; border-radius:5px; margin-left:30%; font-size:1.2rem; height:10%"/>
-		<br><br><input type="button" value="Enter" style="width:40%; background-color:blue; border-radius:5px; color:white; margin-left:30%; font-size:1.2rem; height:10%"/><br><br><br>
-		</form>
+	?>
+
+
+
+
+
+
+
+
+		</select><br><br>
+		<label for="time">Lecture hours :</label>
+		<input class="input1" type="text" id="time" name="time" placeholder="hours"/><br><br>
+		<input type="submit" value="Enter" name="submit" style="width:20%; background-color:green; height:5%; margin-left:18.5%; color:white; border-radius:10px"/><br><br>
 	</div>
+	</form>
 </body>
 </html>

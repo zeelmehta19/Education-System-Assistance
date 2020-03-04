@@ -1,8 +1,11 @@
+
+
+
 <?php
+session_start();
+$_SESSION['uname'] = $_SESSION['stname'];
 
-session_start(); ?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -118,22 +121,10 @@ body {margin:0;font-family:Arial}
 
 <div class="topnav" id="myTopnav">
   <a href="#home" class="active">Home</a>
-  <a href="./schedule.php">Schedule</a>
-  <a href="./student.php">Add Student</a>
-
-  <div class="dropdown">
-    <button class="dropbtn">Teacher
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="addteacher1.php">Add teacher</a>
-      <a href="./viewteacher.php">View/Edit teacher</a>
-
-    </div>
-  </div>
-  <a href="./visitor.php">Add visitor</a>
-  <a href="./changepassword.php">Change Password </a>
-  <a href="./Chat/chat.php">Chatroom </a>
+  <a href="#contact">Schedule</a>
+  <a href="./Chat/chat.php">Room</a>
+  <a href="#contact">Marks</a>
+  <a href="#contact">Hi <?php echo $_SESSION['stname']; ?></a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 

@@ -8,6 +8,26 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+
+
+
+
+
+
+
+$pay = "INSERT INTO `monthly-payment`(`month`, `year`, `totallec`, `teacher`, `amt`, `paid`)
+       VALUES ('$month','$year','$lec','$name','$total','No') ;";
+
+       $qsy = insertintoSql($pay);
+
+
+
+
+
+
+
+
+
 if(isset($_REQUEST["term"])){
     // Prepare a select statement
     $sql = "SELECT * FROM `teacherdetails` WHERE `name` LIKE ?";

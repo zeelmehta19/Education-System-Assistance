@@ -19,6 +19,7 @@ else
     }
     else {
       session_start();
+      $_SESSION['uname']= "Admin";
       header("location: ../adminhome.php");
       }
 

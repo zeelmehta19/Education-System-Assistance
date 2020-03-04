@@ -135,20 +135,42 @@ function gameupdate($username,$wheat,$cow,$milk)
   $conn->close();
 
 }
-function getlevel($username)
+
+
+
+function getTeacherid($tname)
 {
   require("./connect.php");
-  $sql = "SELECT * FROM `users`  WHERE `username` = '$username'; ";
+  $sql = "SELECT * FROM `teacherdetails`  WHERE `name` = '$tname'; ";
   $result = $conn->query($sql);
 
 if ($result->num_rows == 1) {
   $row = $result->fetch_assoc();
-  return $row['level'];
+  return $row['teacherid'];
 } else {
   return "Nullify";
 }
   $conn->close();
 }
+
+function getTeacherRate($id)
+{
+  require("./connect.php");
+  $sql = "SELECT * FROM `teacherpayment`  WHERE `teacherid` = '$id'; ";
+  $result = $conn->query($sql);
+
+if ($result->num_rows == 1) {
+  $row = $result->fetch_assoc();
+  return $row['rate'];
+} else {
+  return "Nullify";
+}
+  $conn->close();
+}
+
+
+
+
 function updateLevel($level,$username)
 {
   require("./connect.php");
