@@ -128,7 +128,7 @@ body {margin:0;font-family:Arial}
     </div>
   </div>
   <a href="./visitor.php">Add visitor</a>
-
+  <a href="./changepassword.php">Change Password </a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 

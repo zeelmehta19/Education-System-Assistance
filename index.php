@@ -21,15 +21,15 @@
     </div>
 
     <!-- Login Form -->
-    <form method="post" action="adminhome.php">
+    <form method="post" action="./includes/login.php">
       <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit" name="submit" class="fadeIn fourth" value="Log In">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="./changepassword.php">Forgot Password?</a>
     </div>
 
   </div>
