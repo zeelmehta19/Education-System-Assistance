@@ -10,4 +10,4 @@ Features:
   
 Created On : 5th March 2020
 
-Database schema given in DB folder. 
+Database schema : db.sql
