@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$sn="remotemysql.com";
-$un="9YeXwWhbvU";
-$pswd= "ZwGmHV8J1b";
-$dbn= "9YeXwWhbvU";
+$sn="localhost";
+	$un="root";
+	$pswd= "YOUR PASSWORD";
+	$dbn= "YOUR DATABASE";
 
 	$conn=new mysqli($sn, $un, $pswd, $dbn);
 
